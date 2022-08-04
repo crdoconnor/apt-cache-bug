@@ -1,0 +1,19 @@
+name: Merge to main
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  merge_to_main:
+    runs-on: ubuntu-latest
+    steps:
+      #- name: ensure qemu packages for running 
+      #  uses: awalsh128/cache-apt-pkgs-action@v1.1.0
+      #  with:
+      #    packages: qemu-system-arm qemu-efi qemu-user-static
+      #    version: 1.0
+
+      - name: run ARM 
+        run: podman run --rm -it docker.io/arm64v8/alpine:3.14 uname -m
